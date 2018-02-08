@@ -1,19 +1,26 @@
 class Change
   def initialize
-    @quarters = 0
-    @nickels = 0
+    @coins = {"quarters" => 0, "dimes" => 0, "nickels" => 0, "pennies" => 0}
+
   end
 
   def coins_back(input)
     until input <= 0
       if input >= 25
-        @quarters += 1
-        input = input - 25
-       elsif input >= 5
-        @nickels =+ 1
-        input = input - 5
+        @coins["quarters"] += 1
+        input -= 25
+      elsif input >=10
+        @coins["dimes"] += 1
+        input -= 10
+      elsif input >= 5
+        @coins["nickels"] =+ 1
+        input -=  5
+      elsif input >= 1
+        @coins["pennies"] =+ 1
+        input -= 1
       end
+
     end
-    "#{@quarters} Quarters, #{@nickels} Nickels"
+    "#{@coins['quarters']} Quarters, #{@coins['dimes']} Dimes, #{@coins['nickels']} Nickels, #{@coins['pennies']} Pennies"
   end
 end
